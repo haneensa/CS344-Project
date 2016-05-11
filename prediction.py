@@ -13,6 +13,7 @@
 # limitations under the License.
 
 """
+    Original l2_nx.py controller desciption:
     A quick-and-dirty learning switch for Open vSwitch
     
     This learning switch requires Nicira extensions as found in Open vSwitch.
@@ -34,7 +35,7 @@
     controller*.  In truth, we could implement this whole thing using OVS's
     learn action, but doing it something like is done here will still allow
     us to implement access control or something at the controller.
-    """
+"""
 
 from pox.core import core
 from pox.lib.addresses import EthAddr
@@ -48,34 +49,26 @@ import threading
 import psutil
 import time
 
-
 # Even a simple usage of the logger is much nicer than print!
 log = core.getLogger()
 
-
-#some global variables
-
-#flow counting within interval
+########  some global variables ##########
+# flow counting within interval
 flow_count = 0
-
-#total flows through duration
+# total flows through duration
 total_flows = 0
-
-#CPU load through duration
+# CPU load through duration
 load_sum = 0.0
 utilization = 0.0
-
-#inter arrival time of flows
+# inter arrival time of flows
 inter_arrival_sum = 0.0
 old_arrival = 0.0
 avg_inter_arrival = 0.0
 inter_arrival_time = 0.0
-
-#controller processing time
+# controller processing time
 process_time = 0.0
 process_time_sum = 0.0
 process_time_avg = 0.0
-
 # sent and received packets within interval
 current_sent_pkts = psutil.net_io_counters().packets_sent
 old_sent_pkts = current_sent_pkts
@@ -86,52 +79,49 @@ old_recv_pkts = current_recv_pkts
 sent_pkts_interval = 0
 recv_pkts_interval = 0
 
-#used RAM within interval
-#according to psutil documentation =>  used: memory used, calculated differently depending on the platform and designed for informational purposes only.
+# used RAM within interval
 used_memory = 0
 current_RAM = psutil.virtual_memory().used
 old_RAM = current_RAM
 
-#used buffer within interval
-#according to psutil documentation => buffers: cache for things like file system metadata.
+# used buffer within interval
 used_buffer = 0
 current_buffer = psutil.virtual_memory().buffers
 old_buffer = current_buffer
 
-
 p = psutil.Process()
 
-
-#prediction variables and arrays
-
+# prediction variables and arrays
+# Learned prediction equation coefficients 
 coef = [-0.0406863425229071, -0.0295177453561016, 0.254104692696994, 0.346778640858201, -0.773910646023645, 0.00385001315181577, -0.0667897034572235, -0.133757351111104, 0.0348236228672685]
-
-observed=[]
-
-prediction_results=[]
-
-actual_load_results=[]
-
-
-
-
+# Store the observed statistics to perform the prediction on them 
+observed = []
+# Store the binary traffic prediciton results
+prediction_results = []
+# strore the actual traffic observation
+actual_load_results = []
+# lookahead interval length
 lookahead_limit = 5
+# track the lookahead interval
 lookahead_counter = 0
+# binary classification results
 loaded = 0
+# binary actual classification
 currently_loaded = 1
+# results of the prediction equation
 prediction = 0
+# variables to keep track of long term in two consecutive predictions
 actual_observe = 0
 actual_list = []
 num_observation = 0
-m = 0
+# counts the correct prediction
+hits = 0
+load_thresh = 80
+lower_bound_thresh = 50
 
 def _prediction(avg_inter_arrival, process_time_avg, utilization, sent_pkts_interval, recv_pkts_interval, used_buffer, used_memory, flow_count, total_flows):
-
-   
-
   global coef
   global observed
-
   global lookahead_limit
   global lookahead_counter
   global loaded #long term load
@@ -142,19 +132,14 @@ def _prediction(avg_inter_arrival, process_time_avg, utilization, sent_pkts_inte
   global actual_observe
   global actual_list
   global num_observation
-  global m
+  global hits
 
   print "entered prediction ", lookahead_counter ,"  ", lookahead_limit, " \n\n"
-
   print "avg inter arrival time || avg Processing Time ||  CPU Load ||  sent bytes || recv bytes || used RAM || used buffers || flows || total Flows until now"
-
   print  avg_inter_arrival ,"\t", process_time_avg ,"\t", utilization , "\t", sent_pkts_interval ,"\t", recv_pkts_interval , "\t" ,used_buffer,"\t",used_memory,"\t", flow_count , "\t" , total_flows
 
-
-  if (avg_inter_arrival > 0): #or utilization > 0 ??
-    
+  if (avg_inter_arrival > 0): #or utilization > 0 ??    
     if (lookahead_counter == 1):
-
       #store the observed stats. in the observed array with normalization
       observed.append((avg_inter_arrival-0.00465599570184450)/0.0101999316634820)
       observed.append((process_time_avg-0.000465111678301057)/0.000307722378725298)
@@ -177,49 +162,48 @@ def _prediction(avg_inter_arrival, process_time_avg, utilization, sent_pkts_inte
       else:
         loaded = 1 # positive => long
 
-      #we've reached the lookahead interval, so now we verify the prediction
+    #we've reached the lookahead interval, so now we verify the prediction
     if (lookahead_counter == lookahead_limit):
       observed = []
       if (currently_loaded != 0):
-        if (utilization >= 80):
+        if (utilization >= load_thresh):
           currently_loaded = 1
 
-      if (loaded == 0 and utilization < 50):
+      if (loaded == 0 and utilization < lower_bound_thresh):
           actual_list = []
     
-      prediction_results.append(loaded)#binary array that represents the predicted load
-      actual_load_results.append(currently_loaded)#binary array that represents the actual load
+      # binary array that represents the predicted load
+      prediction_results.append(loaded)
+      # binary array that represents the actual load
+      actual_load_results.append(currently_loaded)
       actual_list.append(currently_loaded)
-      prediction_sum = sum([prediction_results[n] for n in range(len(prediction_results))])#sum up the predicted load so far
-      actual_sum = sum([actual_load_results[n] for n in range(len(actual_load_results))])#sum up the actual load so far 
-      actual_observe = sum([actual_list[n] for n in range(len(actual_list))])#sum up the actual load so far 
+      # sum up the predicted load so far
+      # prediction_sum = sum([prediction_results[n] for n in range(len(prediction_results))])
+      #sum up the actual load so far 
+      # actual_sum = sum([actual_load_results[n] for n in range(len(actual_load_results))])
+      #sum up the actual load so far 
+      actual_observe = sum([actual_list[n] for n in range(len(actual_list))])
       lookahead_counter = 0
       currently_loaded = 1 #re-initialize
 
-      print "\n\n=====================\nresult of prediction equation = ",prediction,"\n=====================\n"
+      print "\n\n=====================\nresult of prediction equation = ", prediction,"\n=====================\n"
       print "\n\n=====================\nprediction = " , loaded ,"  actual_observe = ", actual_observe,"\n=====================\n" #print both the sum of the predicted load and the actual load to compare 
-      print "\n\n=====================\npredicted sum = " , prediction_sum ,"  actual sum = ", actual_sum,"\n=====================\n" #print both the sum of the predicted load and the actual load to compare 
+      #print "\n\n=====================\npredicted sum = " , prediction_sum ,"  actual sum = ", actual_sum,"\n=====================\n" #print both the sum of the predicted load and the actual load to compare 
       
       if (loaded == 0 and actual_observe < 2):     #not loaded
-          m = m + 1
+          hits = hits + 1
       elif (loaded == 1 and actual_observe >= 1):    #loaded
-          m = m + 1
+          hits = hits + 1
 
-      print "\n\n=====================\n predition = " , m ,"  observation = ", num_observation,"\n=====================\n" #print both the sum of the predicted load and the actual load to compare 
+      print "\n\n=====================\n predition = " , hits ,"  observation = ", num_observation,"\n=====================\n" #print both the sum of the predicted load and the actual load to compare 
       
-
     if (lookahead_counter < lookahead_limit):
-      if (utilization < 80):#if during the lookahead interval we find a drop in the load then it's not long term and not loaded
+      if (utilization < load_thresh): #if during the lookahead interval we find a drop in the load then it's not long term and not loaded
         currently_loaded = 0
       lookahead_counter = lookahead_counter + 1
 
 
 def _timer_func ():
-    # write those information in a file
-    #for connection in core.openflow._connections.values():
-    #connection.send(of.ofp_stats_request(body=of.ofp_flow_stats_request()))
-    #log.info("Sent %i flow stats request(s)", len(core.openflow._connections))
-    
     global avg_inter_arrival
     global inter_arrival_time
     global inter_arrival_sum
@@ -250,16 +234,12 @@ def _timer_func ():
     global actual_load_results
 
     utilization = p.cpu_percent(interval=None)
-    
-    #accumilative memory stats
-    
+    # accumilative memory stats
     mem =  psutil.virtual_memory().buffers
     net_recv = psutil.net_io_counters().packets_recv
     net_sent = psutil.net_io_counters().packets_sent
     
-    
     #sent and recieved packets within time interval
-    
     current_recv_pkts = psutil.net_io_counters().packets_recv
     current_sent_pkts = psutil.net_io_counters().packets_sent
     
@@ -274,9 +254,7 @@ def _timer_func ():
     else:
         recv_pkts_interval = old_recv_pkts - current_recv_pkts
     
-    
-    #amount of used RAM within interval
-    
+    # amount of used RAM within interval
     current_RAM = psutil.virtual_memory().used
     
     if (current_RAM >= old_RAM):
@@ -285,7 +263,6 @@ def _timer_func ():
         used_memory = old_RAM - current_RAM
     
     #amount of used buffers
-    
     current_buffer = psutil.virtual_memory().buffers
     
     if (current_buffer >= old_buffer):
@@ -303,15 +280,11 @@ def _timer_func ():
     else:
         avg_inter_arrival = inter_arrival_sum  /(flow_count * 1.0)
         process_time_avg = process_time_sum/(flow_count * 1.0)
-
     
     thread = threading.Thread(target= _prediction, args = (avg_inter_arrival, process_time_avg, utilization, sent_pkts_interval, recv_pkts_interval, used_buffer, used_memory, flow_count, total_flows,))
     thread.start()
    
-#    _prediction(avg_inter_arrival, process_time_avg, utilization, sent_pkts_interval, recv_pkts_interval, used_buffer, used_memory, flow_count, total_flows)
-
     f = open('out/statistics.out', 'a')
-    # "avg inter arrival time || avg Processing Time ||  CPU Load ||  sent bytes || recv bytes || used RAM || used buffers || flows || total Flows until now"
     f.write(str(avg_inter_arrival))
     f.write(",")
     f.write(str(process_time_avg))
@@ -331,40 +304,22 @@ def _timer_func ():
     f.write(str(total_flows))
     f.write("\n")
     
-#    print "avg inter arrival time || avg Processing Time ||  CPU Load ||  sent bytes || recv bytes || used RAM || used buffers || flows || total Flows until now"
-    
-#    print  avg_inter_arrival ,"\t", process_time_avg ,"\t", utilization , "\t", sent_pkts_interval ,"\t", recv_pkts_interval , "\t" ,used_buffer,"\t",used_memory,"\t", flow_count , "\t" , total_flows
-    
-    
     #re-intialize for the next interval calculations
-    
     flow_count = 0
     process_time_avg = 0.0
-    
     sent_pkts_interval = 0
     recv_pkts_interval = 0
-    
     old_sent_pkts = current_sent_pkts
     old_recv_pkts = current_recv_pkts
-    
     old_buffer = current_buffer
-    
     old_RAM = current_RAM
-    
     inter_arrival_sum = 0.0
-    
     process_time_sum = 0.0
-
-
 
 def Collect ():
     Timer(1, _timer_func, recurring=True)
 
-
-
-
 def _handle_PacketIn (event):
-    
     global inter_arrival_sum
     global flow_count
     global old_arrival
@@ -376,50 +331,32 @@ def _handle_PacketIn (event):
     global total_flows
     
     #start timing the controller processing
-    
     controller_start = time.time()
-    
     #count the incoming flows within an interval. it will get re-initialized every interval
-    
     flow_count= flow_count + 1
-    
     #keep track of the total number of flows
-    
     total_flows = total_flows + 1
-    
     #get the flow arrival time
-    
     current_arrival = time.time()
-    
     #calculate the inter-arrival time
-    
     inter_arrival_time = current_arrival - old_arrival
-    
     #get the average
-    
     inter_arrival_sum = inter_arrival_sum + inter_arrival_time
-    
     old_arrival = current_arrival
-    
+
     packet = event.parsed
  
     # reactive flow installation in table 0
     msg = nx.nx_flow_mod()
-    if (utilization <= 200):
-        #      msg = nx.nx_flow_mod()
+    if (actual_observe < 2):
         msg.match.of_eth_src = packet.dst
         msg.match.of_eth_dst = packet.src
         msg.idle_timeout = 4
-        # msg.hard_timeout = 20
         msg.flags = of.OFPFF_SEND_FLOW_REM
         msg.actions.append(of.ofp_action_output(port = event.port))
-        # msg.actions.append(nx.nx_action_resubmit.resubmit_table(table = 1))
         core.openflow.sendToDPID(event.dpid, msg)
         
-#        print "NOT LOADED ====== \n "
-        
         #install entries in backup table (table 1) with long enough TTL
-        
         msg = nx.nx_flow_mod()
         msg.match.of_eth_src = packet.dst
         msg.match.of_eth_dst = packet.src
@@ -428,25 +365,18 @@ def _handle_PacketIn (event):
         msg.actions.append(of.ofp_action_output(port = event.port))
         core.openflow.sendToDPID(event.dpid, msg)
     
-    #if controller is loaded then resubmit from table 0 to table 1 (backup table)
-    #Now flows will use table 1 only without communicating with the controller
-    
-    #to communicate with the controller again, we need to let the flows expire from table 1 after some time (decided based on how long time the CPU load needs to cool down)
+    # if controller is loaded then resubmit from table 0 to table 1 (backup table)
+    # Now flows will use table 1 only without communicating with the controller
+    # to communicate with the controller again, we need to let the flows expire from table 1 after some time 
+    # (decided based on how long time the CPU load needs to cool down)
     else:
-        
         msg.actions.append(nx.nx_action_resubmit.resubmit_table(table = 1))
         core.openflow.sendToDPID(event.dpid, msg)
- #       print "LOADED NOW \n"
     
     # stop timing the controller processing time
-    
     controller_end = time.time()
-    
     process_time = controller_end - controller_start
-    
     process_time_sum = process_time_sum + process_time
-
-
 
 def _handle_ConnectionUp (event):
     # Set up this switch.
@@ -476,25 +406,9 @@ def _handle_ConnectionUp (event):
     msg.actions.append(nx.nx_action_resubmit.resubmit_table(table = 1))
     event.connection.send(msg)
     
-    # This part is from the switch self learning code which makes the switches learn about the flows without communicating with the controller
-    
-    #    learn = nx.nx_action_learn(table_id=1,hard_timeout=0)
-    #    learn.spec.chain(
-    #      field=nx.NXM_OF_VLAN_TCI, n_bits=12).chain(
-    #      field=nx.NXM_OF_ETH_SRC, match=nx.NXM_OF_ETH_DST).chain(
-    #      field=nx.NXM_OF_IN_PORT, output=True)
-    
-    #    msg.actions.append(learn)
-    #    msg.actions.append(nx.nx_action_resubmit.resubmit_table(1))
-    #    event.connection.send(msg)
-    
-    
-    
     # Fallthrough rule for table 1: flood
     msg = nx.nx_flow_mod()
     msg.table_id = 1
-    #    msg.priority = 1 # Low priority
-    #    msg.actions.append(of.ofp_action_output(port = of.OFPP_CONTROLLER))
     msg.actions.append(of.ofp_action_output(port = of.OFPP_FLOOD))
     event.connection.send(msg)
     

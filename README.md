@@ -2,9 +2,14 @@
 1. sudo apt-get install python-pip
 2. sudo pip install matplotlib
 
-# Install psuti;
+# Install psutil
 1. $ pip install psutil
 
 # Run the simulation
-1. Move controller_stat.py to ~/pox/pox/forwarding/
-2. $ sh run.sh
+1. Move controller_stat.py and controller_pro.py and prediction.py to ~/pox/pox/forwarding/
+$ mv controller_stat.py controller_pro.py prediction.py ~/pox/pox/forwarding/
+2. Open two VMs and run the following on one machine: 
+$ sh run.sh
+3. Run controller.py in another machine:
+$ sh controller.sh
+
