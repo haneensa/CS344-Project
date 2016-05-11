@@ -48,11 +48,11 @@ def treePing64():
     mean3 = 0.001
     lambd3 = 1.0 / mean3
     # flags to set to test different traffic behaviours
-    long_term = 1
-    low_lod = 0
+    long_term = 0
+    low_load = 0
     fixed = 0
     spike = 0
-    mixed = 0
+    mixed = 1
     # local variables
     i = 0
     r = 15
@@ -95,7 +95,7 @@ def treePing64():
                     elif (flag >= 7 and flag <= 8):
                         print "3) less load"
                         randx = random.expovariate(lambd2)
-                    elif (flag > 8 and flag <= 45):
+                    elif (flag > 8 and flag <= 50):
                         print "4) high load"
                         randx = random.expovariate(lambd3)
                 # end if 
@@ -104,8 +104,8 @@ def treePing64():
             # end if
             i = i + 1
             flag = flag + 1
-            if (mixed == 45):
-                thresh = 5
+            if (mixed == 1):
+                thresh = 50
             else:
                 thresh = 5
             if (flag > thresh):
