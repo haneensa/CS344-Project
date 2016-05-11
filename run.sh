@@ -6,7 +6,7 @@ sudo mn -c
 sudo killall python2.7
 sudo fuser -k 6633/tcp
 #sudo ./pingTest.py &
-sudo ./treeping64.py
+sudo ./simulation.py
 
 # UNCOMENT IF BOTH TOPO and CONTROLLER ON THE SAME MACINE
 #export PYTHONPATH=`pwd`
