@@ -13,28 +13,28 @@
 # limitations under the License.
 
 """
-    Original l2_nx.py controller desciption:
-    A quick-and-dirty learning switch for Open vSwitch
-    
-    This learning switch requires Nicira extensions as found in Open vSwitch.
-    Run with something like:
-    ./pox.py openflow.nicira --convert-packet-in forwarding.l2_nx
-    
-    This forwards based on ethernet source and destination addresses.  Where
-    l2_pairs installs rules for each pair of source and destination address,
-    this component uses two tables on the switch -- one for source addresses
-    and one for destination addresses.  Specifically, we use tables 0 and 1
-    on the switch to implement the following logic:
-    0. Is this source address known?
-    NO: Send to controller (so we can learn it)
-    1. Is this destination address known?
-    YES:  Forward out correct port
-    NO: Flood
-    
-    Note that unlike the other learning switches *we keep no state in the
-    controller*.  In truth, we could implement this whole thing using OVS's
-    learn action, but doing it something like is done here will still allow
-    us to implement access control or something at the controller.
+Original l2_nx.py controller desciption:
+A quick-and-dirty learning switch for Open vSwitch
+
+This learning switch requires Nicira extensions as found in Open vSwitch.
+Run with something like:
+./pox.py openflow.nicira --convert-packet-in forwarding.l2_nx
+
+This forwards based on ethernet source and destination addresses.  Where
+l2_pairs installs rules for each pair of source and destination address,
+this component uses two tables on the switch -- one for source addresses
+and one for destination addresses.  Specifically, we use tables 0 and 1
+on the switch to implement the following logic:
+0. Is this source address known?
+NO: Send to controller (so we can learn it)
+1. Is this destination address known?
+YES:  Forward out correct port
+NO: Flood
+
+Note that unlike the other learning switches *we keep no state in the
+controller*.  In truth, we could implement this whole thing using OVS's
+learn action, but doing it something like is done here will still allow
+us to implement access control or something at the controller.
 """
 
 from pox.core import core
@@ -177,28 +177,26 @@ def _prediction(avg_inter_arrival, process_time_avg, utilization, sent_pkts_inte
       # binary array that represents the actual load
       actual_load_results.append(currently_loaded)
       actual_list.append(currently_loaded)
-      # sum up the predicted load so far
-      # prediction_sum = sum([prediction_results[n] for n in range(len(prediction_results))])
-      #sum up the actual load so far 
-      # actual_sum = sum([actual_load_results[n] for n in range(len(actual_load_results))])
       #sum up the actual load so far 
       actual_observe = sum([actual_list[n] for n in range(len(actual_list))])
       lookahead_counter = 0
       currently_loaded = 1 #re-initialize
 
       print "\n\n=====================\nresult of prediction equation = ", prediction,"\n=====================\n"
+      # print both the sum of the predicted load and the actual load to compare 
       print "\n\n=====================\nprediction = " , loaded ,"  actual_observe = ", actual_observe,"\n=====================\n" #print both the sum of the predicted load and the actual load to compare 
-      #print "\n\n=====================\npredicted sum = " , prediction_sum ,"  actual sum = ", actual_sum,"\n=====================\n" #print both the sum of the predicted load and the actual load to compare 
       
       if (loaded == 0 and actual_observe < 2):     #not loaded
           hits = hits + 1
       elif (loaded == 1 and actual_observe >= 1):    #loaded
           hits = hits + 1
 
-      print "\n\n=====================\n predition = " , hits ,"  observation = ", num_observation,"\n=====================\n" #print both the sum of the predicted load and the actual load to compare 
+      # print both the sum of the predicted load and the actual load to compare 
+      print "\n\n=====================\n predition = " , hits ,"  observation = ", num_observation,"\n=====================\n"
       
     if (lookahead_counter < lookahead_limit):
-      if (utilization < load_thresh): #if during the lookahead interval we find a drop in the load then it's not long term and not loaded
+      #if during the lookahead interval we find a drop in the load then it's not long term and not loaded
+      if (utilization < load_thresh):
         currently_loaded = 0
       lookahead_counter = lookahead_counter + 1
 

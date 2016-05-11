@@ -1,0 +1,517 @@
+PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+64 bytes from 10.0.0.1: icmp_req=1 ttl=64 time=366 ms
+PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+64 bytes from 10.0.0.2: icmp_req=1 ttl=64 time=606 ms
+PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+From 10.0.0.62 icmp_seq=1 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=2 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=3 Destination Host Unreachable
+PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+From 10.0.0.62 icmp_seq=1 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=2 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=3 Destination Host Unreachable
+PING 10.0.0.7 (10.0.0.7) 56(84) bytes of data.
+From 10.0.0.62 icmp_seq=1 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=2 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=3 Destination Host Unreachable
+PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+64 bytes from 10.0.0.3: icmp_req=4 ttl=64 time=1239 ms
+
+--- 10.0.0.1 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4016ms
+rtt min/avg/max/mdev = 366.898/366.898/366.898/0.000 ms
+
+--- 10.0.0.2 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4015ms
+rtt min/avg/max/mdev = 606.468/606.468/606.468/0.000 ms
+From 10.0.0.62 icmp_seq=4 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=5 Destination Host Unreachable
+
+--- 10.0.0.4 ping statistics ---
+5 packets transmitted, 0 received, +5 errors, 100% packet loss, time 4008ms
+pipe 3
+From 10.0.0.62 icmp_seq=4 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=5 Destination Host Unreachable
+
+--- 10.0.0.5 ping statistics ---
+5 packets transmitted, 0 received, +5 errors, 100% packet loss, time 4010ms
+pipe 3
+PING 10.0.0.22 (10.0.0.22) 56(84) bytes of data.
+64 bytes from 10.0.0.22: icmp_req=3 ttl=64 time=707 ms
+PING 10.0.0.23 (10.0.0.23) 56(84) bytes of data.
+From 10.0.0.62 icmp_seq=1 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=2 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=3 Destination Host Unreachable
+PING 10.0.0.25 (10.0.0.25) 56(84) bytes of data.
+64 bytes from 10.0.0.25: icmp_req=3 ttl=64 time=685 ms
+
+--- 10.0.0.22 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4000ms
+rtt min/avg/max/mdev = 707.968/707.968/707.968/0.000 ms
+
+--- 10.0.0.25 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4001ms
+rtt min/avg/max/mdev = 685.586/685.586/685.586/0.000 ms
+PING 10.0.0.43 (10.0.0.43) 56(84) bytes of data.
+From 10.0.0.62 icmp_seq=1 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=2 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=3 Destination Host Unreachable
+
+--- 10.0.0.3 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4013ms
+rtt min/avg/max/mdev = 1239.036/1239.036/1239.036/0.000 ms, pipe 2
+PING 10.0.0.45 (10.0.0.45) 56(84) bytes of data.
+From 10.0.0.62 icmp_seq=1 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=2 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=3 Destination Host Unreachable
+PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+--- 10.0.0.6 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4012ms
+
+
+--- 10.0.0.7 ping statistics ---
+5 packets transmitted, 0 received, +3 errors, 100% packet loss, time 4028ms
+pipe 3
+PING 10.0.0.49 (10.0.0.49) 56(84) bytes of data.
+From 10.0.0.62 icmp_seq=1 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=2 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=3 Destination Host Unreachable
+PING 10.0.0.8 (10.0.0.8) 56(84) bytes of data.
+
+--- 10.0.0.8 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4005ms
+
+PING 10.0.0.9 (10.0.0.9) 56(84) bytes of data.
+
+--- 10.0.0.9 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4011ms
+
+PING 10.0.0.57 (10.0.0.57) 56(84) bytes of data.
+64 bytes from 10.0.0.57: icmp_req=2 ttl=64 time=221 ms
+PING 10.0.0.59 (10.0.0.59) 56(84) bytes of data.
+64 bytes from 10.0.0.59: icmp_req=1 ttl=64 time=755 ms
+PING 10.0.0.60 (10.0.0.60) 56(84) bytes of data.
+64 bytes from 10.0.0.60: icmp_req=1 ttl=64 time=446 ms
+PING 10.0.0.10 (10.0.0.10) 56(84) bytes of data.
+
+--- 10.0.0.10 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4013ms
+
+PING 10.0.0.52 (10.0.0.52) 56(84) bytes of data.
+64 bytes from 10.0.0.52: icmp_req=3 ttl=64 time=836 ms
+PING 10.0.0.61 (10.0.0.61) 56(84) bytes of data.
+64 bytes from 10.0.0.61: icmp_req=1 ttl=64 time=363 ms
+PING 10.0.0.11 (10.0.0.11) 56(84) bytes of data.
+
+--- 10.0.0.11 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4030ms
+
+PING 10.0.0.12 (10.0.0.12) 56(84) bytes of data.
+
+--- 10.0.0.12 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 3999ms
+
+From 10.0.0.62 icmp_seq=4 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=5 Destination Host Unreachable
+
+--- 10.0.0.43 ping statistics ---
+5 packets transmitted, 0 received, +5 errors, 100% packet loss, time 4017ms
+pipe 3
+PING 10.0.0.64 (10.0.0.64) 56(84) bytes of data.
+64 bytes from 10.0.0.64: icmp_req=1 ttl=64 time=353 ms
+PING 10.0.0.13 (10.0.0.13) 56(84) bytes of data.
+
+--- 10.0.0.13 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4024ms
+
+64 bytes from 10.0.0.60: icmp_req=2 ttl=64 time=320 ms
+64 bytes from 10.0.0.57: icmp_req=3 ttl=64 time=221 ms
+64 bytes from 10.0.0.61: icmp_req=2 ttl=64 time=217 ms
+PING 10.0.0.14 (10.0.0.14) 56(84) bytes of data.
+
+--- 10.0.0.14 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4014ms
+
+PING 10.0.0.15 (10.0.0.15) 56(84) bytes of data.
+
+--- 10.0.0.15 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4000ms
+
+PING 10.0.0.58 (10.0.0.58) 56(84) bytes of data.
+64 bytes from 10.0.0.58: icmp_req=3 ttl=64 time=279 ms
+PING 10.0.0.16 (10.0.0.16) 56(84) bytes of data.
+
+--- 10.0.0.16 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4002ms
+
+64 bytes from 10.0.0.64: icmp_req=2 ttl=64 time=296 ms
+64 bytes from 10.0.0.60: icmp_req=3 ttl=64 time=299 ms
+PING 10.0.0.17 (10.0.0.17) 56(84) bytes of data.
+
+--- 10.0.0.17 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4001ms
+
+From 10.0.0.62 icmp_seq=4 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=5 Destination Host Unreachable
+
+--- 10.0.0.49 ping statistics ---
+5 packets transmitted, 0 received, +5 errors, 100% packet loss, time 4017ms
+pipe 3
+PING 10.0.0.18 (10.0.0.18) 56(84) bytes of data.
+
+--- 10.0.0.18 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4005ms
+
+PING 10.0.0.19 (10.0.0.19) 56(84) bytes of data.
+
+--- 10.0.0.19 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4010ms
+
+64 bytes from 10.0.0.64: icmp_req=3 ttl=64 time=290 ms
+64 bytes from 10.0.0.60: icmp_req=4 ttl=64 time=286 ms
+64 bytes from 10.0.0.61: icmp_req=4 ttl=64 time=171 ms
+
+--- 10.0.0.52 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4003ms
+rtt min/avg/max/mdev = 836.051/836.051/836.051/0.000 ms
+PING 10.0.0.20 (10.0.0.20) 56(84) bytes of data.
+
+--- 10.0.0.20 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4016ms
+
+PING 10.0.0.8 (10.0.0.8) 56(84) bytes of data.
+64 bytes from 10.0.0.8: icmp_req=1 ttl=64 time=829 ms
+PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+From 10.0.0.62 icmp_seq=1 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=2 Destination Host Unreachable
+PING 10.0.0.21 (10.0.0.21) 56(84) bytes of data.
+
+--- 10.0.0.21 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4008ms
+
+64 bytes from 10.0.0.59: icmp_req=5 ttl=64 time=190 ms
+
+--- 10.0.0.23 ping statistics ---
+5 packets transmitted, 0 received, +3 errors, 100% packet loss, time 4007ms
+pipe 3
+
+--- 10.0.0.57 ping statistics ---
+5 packets transmitted, 2 received, 60% packet loss, time 4005ms
+rtt min/avg/max/mdev = 221.166/221.378/221.590/0.212 ms
+64 bytes from 10.0.0.64: icmp_req=4 ttl=64 time=363 ms
+PING 10.0.0.24 (10.0.0.24) 56(84) bytes of data.
+
+--- 10.0.0.24 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 3999ms
+
+
+--- 10.0.0.58 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4003ms
+rtt min/avg/max/mdev = 279.254/279.254/279.254/0.000 ms
+PING 10.0.0.26 (10.0.0.26) 56(84) bytes of data.
+
+--- 10.0.0.26 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4002ms
+
+
+--- 10.0.0.60 ping statistics ---
+5 packets transmitted, 4 received, 20% packet loss, time 3999ms
+rtt min/avg/max/mdev = 286.908/338.283/446.525/63.602 ms
+PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+From 10.0.0.62 icmp_seq=1 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=2 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=3 Destination Host Unreachable
+PING 10.0.0.27 (10.0.0.27) 56(84) bytes of data.
+
+--- 10.0.0.27 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4004ms
+
+
+--- 10.0.0.59 ping statistics ---
+5 packets transmitted, 2 received, 60% packet loss, time 4008ms
+rtt min/avg/max/mdev = 190.360/472.825/755.291/282.466 ms
+
+--- 10.0.0.61 ping statistics ---
+5 packets transmitted, 3 received, 40% packet loss, time 4004ms
+rtt min/avg/max/mdev = 171.926/251.104/363.489/81.655 ms
+PING 10.0.0.28 (10.0.0.28) 56(84) bytes of data.
+
+--- 10.0.0.28 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4025ms
+
+PING 10.0.0.29 (10.0.0.29) 56(84) bytes of data.
+
+--- 10.0.0.29 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4000ms
+
+
+--- 10.0.0.64 ping statistics ---
+5 packets transmitted, 4 received, 20% packet loss, time 4031ms
+rtt min/avg/max/mdev = 290.918/326.137/363.749/32.787 ms
+PING 10.0.0.30 (10.0.0.30) 56(84) bytes of data.
+
+--- 10.0.0.30 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4017ms
+
+PING 10.0.0.31 (10.0.0.31) 56(84) bytes of data.
+
+--- 10.0.0.31 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4012ms
+
+PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+64 bytes from 10.0.0.3: icmp_req=5 ttl=64 time=755 ms
+PING 10.0.0.32 (10.0.0.32) 56(84) bytes of data.
+
+--- 10.0.0.32 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4000ms
+
+PING 10.0.0.33 (10.0.0.33) 56(84) bytes of data.
+
+--- 10.0.0.33 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4000ms
+
+PING 10.0.0.22 (10.0.0.22) 56(84) bytes of data.
+64 bytes from 10.0.0.22: icmp_req=1 ttl=64 time=364 ms
+PING 10.0.0.19 (10.0.0.19) 56(84) bytes of data.
+64 bytes from 10.0.0.19: icmp_req=2 ttl=64 time=167 ms
+From 10.0.0.62 icmp_seq=3 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=4 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=5 Destination Host Unreachable
+
+--- 10.0.0.4 ping statistics ---
+5 packets transmitted, 0 received, +5 errors, 100% packet loss, time 4002ms
+pipe 3
+PING 10.0.0.16 (10.0.0.16) 56(84) bytes of data.
+64 bytes from 10.0.0.16: icmp_req=3 ttl=64 time=165 ms
+PING 10.0.0.34 (10.0.0.34) 56(84) bytes of data.
+
+--- 10.0.0.34 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4000ms
+
+64 bytes from 10.0.0.8: icmp_req=5 ttl=64 time=168 ms
+PING 10.0.0.20 (10.0.0.20) 56(84) bytes of data.
+64 bytes from 10.0.0.20: icmp_req=2 ttl=64 time=156 ms
+PING 10.0.0.13 (10.0.0.13) 56(84) bytes of data.
+64 bytes from 10.0.0.13: icmp_req=4 ttl=64 time=190 ms
+PING 10.0.0.35 (10.0.0.35) 56(84) bytes of data.
+
+--- 10.0.0.35 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4020ms
+
+PING 10.0.0.9 (10.0.0.9) 56(84) bytes of data.
+64 bytes from 10.0.0.9: icmp_req=5 ttl=64 time=214 ms
+PING 10.0.0.17 (10.0.0.17) 56(84) bytes of data.
+64 bytes from 10.0.0.17: icmp_req=3 ttl=64 time=216 ms
+PING 10.0.0.36 (10.0.0.36) 56(84) bytes of data.
+
+--- 10.0.0.36 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4034ms
+
+PING 10.0.0.11 (10.0.0.11) 56(84) bytes of data.
+64 bytes from 10.0.0.11: icmp_req=5 ttl=64 time=127 ms
+64 bytes from 10.0.0.19: icmp_req=3 ttl=64 time=91.2 ms
+PING 10.0.0.37 (10.0.0.37) 56(84) bytes of data.
+
+--- 10.0.0.37 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4032ms
+
+64 bytes from 10.0.0.16: icmp_req=4 ttl=64 time=134 ms
+PING 10.0.0.12 (10.0.0.12) 56(84) bytes of data.
+64 bytes from 10.0.0.12: icmp_req=5 ttl=64 time=118 ms
+64 bytes from 10.0.0.20: icmp_req=3 ttl=64 time=77.7 ms
+PING 10.0.0.38 (10.0.0.38) 56(84) bytes of data.
+
+--- 10.0.0.38 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4033ms
+
+64 bytes from 10.0.0.13: icmp_req=5 ttl=64 time=87.5 ms
+From 10.0.0.62 icmp_seq=4 Destination Host Unreachable
+From 10.0.0.62 icmp_seq=5 Destination Host Unreachable
+
+--- 10.0.0.5 ping statistics ---
+5 packets transmitted, 0 received, +5 errors, 100% packet loss, time 4012ms
+pipe 4
+PING 10.0.0.39 (10.0.0.39) 56(84) bytes of data.
+
+--- 10.0.0.39 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4024ms
+
+PING 10.0.0.14 (10.0.0.14) 56(84) bytes of data.
+64 bytes from 10.0.0.14: icmp_req=5 ttl=64 time=164 ms
+
+--- 10.0.0.8 ping statistics ---
+5 packets transmitted, 2 received, 60% packet loss, time 4009ms
+rtt min/avg/max/mdev = 168.496/498.909/829.323/330.414 ms
+PING 10.0.0.18 (10.0.0.18) 56(84) bytes of data.
+64 bytes from 10.0.0.18: icmp_req=4 ttl=64 time=123 ms
+64 bytes from 10.0.0.22: icmp_req=3 ttl=64 time=103 ms
+PING 10.0.0.40 (10.0.0.40) 56(84) bytes of data.
+
+--- 10.0.0.40 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4000ms
+
+PING 10.0.0.15 (10.0.0.15) 56(84) bytes of data.
+64 bytes from 10.0.0.15: icmp_req=5 ttl=64 time=167 ms
+64 bytes from 10.0.0.19: icmp_req=4 ttl=64 time=68.1 ms
+PING 10.0.0.41 (10.0.0.41) 56(84) bytes of data.
+
+--- 10.0.0.41 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4000ms
+
+64 bytes from 10.0.0.16: icmp_req=5 ttl=64 time=36.2 ms
+64 bytes from 10.0.0.20: icmp_req=4 ttl=64 time=7.94 ms
+
+--- 10.0.0.13 ping statistics ---
+5 packets transmitted, 2 received, 60% packet loss, time 4000ms
+rtt min/avg/max/mdev = 87.509/139.101/190.693/51.592 ms
+PING 10.0.0.42 (10.0.0.42) 56(84) bytes of data.
+
+--- 10.0.0.42 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4015ms
+
+64 bytes from 10.0.0.17: icmp_req=5 ttl=64 time=9.63 ms
+PING 10.0.0.21 (10.0.0.21) 56(84) bytes of data.
+64 bytes from 10.0.0.21: icmp_req=4 ttl=64 time=15.1 ms
+64 bytes from 10.0.0.18: icmp_req=5 ttl=64 time=2.46 ms
+64 bytes from 10.0.0.22: icmp_req=4 ttl=64 time=0.785 ms
+PING 10.0.0.44 (10.0.0.44) 56(84) bytes of data.
+
+--- 10.0.0.44 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4017ms
+
+64 bytes from 10.0.0.19: icmp_req=5 ttl=64 time=0.858 ms
+
+--- 10.0.0.16 ping statistics ---
+5 packets transmitted, 3 received, 40% packet loss, time 4003ms
+rtt min/avg/max/mdev = 36.256/112.041/165.044/54.990 ms
+
+--- 10.0.0.45 ping statistics ---
+5 packets transmitted, 0 received, +3 errors, 100% packet loss, time 4015ms
+pipe 3
+64 bytes from 10.0.0.20: icmp_req=5 ttl=64 time=0.652 ms
+
+--- 10.0.0.17 ping statistics ---
+5 packets transmitted, 2 received, 60% packet loss, time 4003ms
+rtt min/avg/max/mdev = 9.634/113.212/216.791/103.579 ms
+PING 10.0.0.46 (10.0.0.46) 56(84) bytes of data.
+
+--- 10.0.0.46 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4018ms
+
+64 bytes from 10.0.0.21: icmp_req=5 ttl=64 time=1.11 ms
+
+--- 10.0.0.18 ping statistics ---
+5 packets transmitted, 2 received, 60% packet loss, time 4003ms
+rtt min/avg/max/mdev = 2.462/62.805/123.148/60.343 ms
+PING 10.0.0.47 (10.0.0.47) 56(84) bytes of data.
+
+--- 10.0.0.47 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4003ms
+
+64 bytes from 10.0.0.22: icmp_req=5 ttl=64 time=0.563 ms
+PING 10.0.0.48 (10.0.0.48) 56(84) bytes of data.
+
+--- 10.0.0.48 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4003ms
+
+
+--- 10.0.0.19 ping statistics ---
+5 packets transmitted, 4 received, 20% packet loss, time 4005ms
+rtt min/avg/max/mdev = 0.858/81.874/167.258/59.433 ms
+
+--- 10.0.0.20 ping statistics ---
+5 packets transmitted, 4 received, 20% packet loss, time 4004ms
+rtt min/avg/max/mdev = 0.652/60.709/156.446/62.945 ms
+
+--- 10.0.0.21 ping statistics ---
+5 packets transmitted, 2 received, 60% packet loss, time 4010ms
+rtt min/avg/max/mdev = 1.119/8.114/15.110/6.996 ms
+PING 10.0.0.50 (10.0.0.50) 56(84) bytes of data.
+
+--- 10.0.0.50 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4002ms
+
+
+--- 10.0.0.22 ping statistics ---
+5 packets transmitted, 4 received, 20% packet loss, time 4003ms
+rtt min/avg/max/mdev = 0.563/117.302/364.184/148.610 ms
+PING 10.0.0.51 (10.0.0.51) 56(84) bytes of data.
+
+--- 10.0.0.51 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4005ms
+
+PING 10.0.0.53 (10.0.0.53) 56(84) bytes of data.
+
+--- 10.0.0.53 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4007ms
+
+PING 10.0.0.54 (10.0.0.54) 56(84) bytes of data.
+
+--- 10.0.0.54 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4011ms
+
+PING 10.0.0.55 (10.0.0.55) 56(84) bytes of data.
+
+--- 10.0.0.55 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4010ms
+
+PING 10.0.0.56 (10.0.0.56) 56(84) bytes of data.
+
+--- 10.0.0.56 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4001ms
+
+PING 10.0.0.63 (10.0.0.63) 56(84) bytes of data.
+
+--- 10.0.0.63 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4010ms
+
+PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+--- 10.0.0.1 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4003ms
+
+PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+--- 10.0.0.2 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4009ms
+
+
+--- 10.0.0.3 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4022ms
+rtt min/avg/max/mdev = 755.668/755.668/755.668/0.000 ms
+PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+--- 10.0.0.6 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4003ms
+
+PING 10.0.0.7 (10.0.0.7) 56(84) bytes of data.
+
+--- 10.0.0.7 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4003ms
+
+
+--- 10.0.0.9 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4000ms
+rtt min/avg/max/mdev = 214.499/214.499/214.499/0.000 ms
+PING 10.0.0.10 (10.0.0.10) 56(84) bytes of data.
+
+--- 10.0.0.10 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4002ms
+
+
+--- 10.0.0.11 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4012ms
+rtt min/avg/max/mdev = 127.976/127.976/127.976/0.000 ms
+
+--- 10.0.0.12 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4013ms
+rtt min/avg/max/mdev = 118.259/118.259/118.259/0.000 ms
+
+--- 10.0.0.14 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4003ms
+rtt min/avg/max/mdev = 164.251/164.251/164.251/0.000 ms
+
+--- 10.0.0.15 ping statistics ---
+5 packets transmitted, 1 received, 80% packet loss, time 4011ms
+rtt min/avg/max/mdev = 167.465/167.465/167.465/0.000 ms

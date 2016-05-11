@@ -1,25 +1,11 @@
 #!/usr/bin/python
 """
-Test bandwidth (using iperf) on linear networks of varying size,
-using both kernel and user datapaths.
-
-We construct a network of N hosts and N-1 switches, connected as follows:
-
+This script creats a linear topology of N hosts and N-1 switches, connected as follows:
 h1 <-> s1 <-> s2 .. sN-1
        |       |    |
        h2      h3   hN
-
-WARNING: by default, the reference controller only supports 16
-switches, so this test WILL NOT WORK unless you have recompiled
-your controller to support 100 switches (or more.)
-
-In addition to testing the bandwidth across varying numbers
-of switches, this example demonstrates:
-
 - creating a custom topology, LinearTestTopo
-- using the ping() and iperf() tests from Mininet()
-- testing both the kernel and user switches
-
+- using the ping() test from Mininet()
 """
 from mininet.net import Mininet
 from mininet.node import UserSwitch, OVSKernelSwitch
