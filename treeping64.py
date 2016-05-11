@@ -106,7 +106,7 @@ def treePing64():
             flag = flag + 1
             if (mixed == 45):
                 thresh = 5
-            else
+            else:
                 thresh = 5
             if (flag > thresh):
                 flag = 0
